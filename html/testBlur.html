@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试blur效果</title>
+	<style>
+		*{
+			margin : 0;
+			padding : 0;
+		}
+		html,body{
+			height: 100%;
+		}
+		body{
+			background-image: url(../images/1.jpg);
+			background-position: center;
+			background-size: cover;
+		}
+		.main {
+		    position: absolute;
+		    overflow: hidden;
+		    width : 800px;
+			height : 360px;
+			top : 50%;
+			margin-top: -180px;
+			margin-left: -400px;
+			left : 50%;
+			border-radius: 4px;
+		}
+		#test-canvas{
+			position: absolute;
+			width : 100%;
+			height : 100%;
+			/*visibility: hidden;*/
+		}
+		.clipbox{
+		    position: absolute;
+		    width: 100%;
+		    height : 100%;
+		}
+		/*.main::before {
+		    content: '';
+		    position: absolute;
+		    top: 0; right: 0; bottom: 0; left: 0;
+		    background-color: rgba(255,255,255,.1);
+		    z-index: 3;
+		}
+		.main::after {
+		    content: '';
+		    position: absolute;
+		    top: 0; right: 0; bottom: 0; left: 0;
+		    background-color: rgba(0,0,0,.1);
+		    z-index: 2;
+		}*/
+		.content{
+			position: relative;
+			z-index: 3;
+		}
+	</style>
+	
+</head>
+<body>
+	<img src="../images/1.jpg" alt="" id="test-canvas">
+	<canvas class="clipbox" id='clipbox'></canvas>
+	<div class="main">
+		<div class="clipbox"></div>
+	</div>
+	<option value="<%=data.lessonId%>" data-startdate = <%=data.startDate%> data-enddate = <%=data.endDate%>><%=data.lessonName%></option>
+	<option value="<%=data.classId%>"  data-lessonid = <%=data.lessonId%> data-lessonnum = <%=data.lessonNum%> data-lessonnum = <%=data.remainNum%>><%=data.className%></option>
+</body>
+<script src='../src/modules/stackblur.js'></script>
+<script>
+	window.onload = function(){
+		var canvas = document.querySelector('#clipbox'),
+		imgEl = document.querySelector('#test-canvas'),
+		context = canvas.getContext('2d');
+		context.drawImage(imgEl,0,0);
+		StackBlur.canvasRGB(canvas, 50, 50, 800, 360, 15);
+	}
+</script>
+</html>
