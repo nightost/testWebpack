@@ -10,10 +10,13 @@ module.exports = {
         extensions : ['.js']
     },
     module: {
-        loaders: [
-            { 
-                loader: "babel-core" 
-            }
-        ]
+        loaders: [{
+                    test: /.js?$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/
+                 }],
+        resolveLoader: {
+            modulesDirectories : ['node_modules/']
+        }
     }
 };
