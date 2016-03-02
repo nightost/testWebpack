@@ -27,11 +27,22 @@ var Hello = React.createClass({
 	},
 	render : function(){
 		return (
-			<div className = 'con'>
+			<div className = 'con' time = {this.props.name}>
 				<div ref='titleCon' className  = 'title'>{this.state.val}</div>
 				<input ref='nameInput' onKeyUp = {this.handleInputKeyDown}/>
 			</div>
 			);
 	}  
 });
-ReactDOM.render(<Hello />,document.getElementById('test'));
+Hello.firstChild = React.createClass({
+	render : function(){
+		return <div>i'm hello's first child</div>
+	}
+});
+var HelloElement = (
+    <div>
+	    <Hello name = 'hello components'/>
+        <Hello.firstChild />
+    </div>
+);
+ReactDOM.render(HelloElement,document.getElementById('test'));
