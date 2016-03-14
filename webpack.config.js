@@ -1,9 +1,9 @@
 var path = require('path');
 module.exports = {
-    entry: "./src/js/testReact",
+    entry: "./src/js/testInput",
     output: {
         path: 'build/js/',
-        filename: "[name]-bundle.js"
+        filename: "[name]-input.js"
     },
     resolve: {
         modulesDirectories: ['src/modules'],
