@@ -1,6 +1,14 @@
 /**
  * Created by nightost on 16/3/9.
  */
+
+class World extends React.Component {
+    render() {
+        return <h1>World</h1>
+    }
+}
+
+ReactDOM.render(<World/>, document.getElementById('test1'));
 var Note = React.createClass({
     getInitialState : function(){
         return {

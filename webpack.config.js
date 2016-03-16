@@ -10,11 +10,16 @@ module.exports = {
         extensions : ['.js']
     },
     module: {
-        loaders: [{
-                    test: /.js?$/,
-                    loader: 'babel-loader',
-                    exclude: /node_modules/
-                 }],
+        loaders: [
+            {
+                test: /.js?$/,
+                loader: 'babel', // 'babel-loader' is also a legal name to reference
+                query: {
+                    presets: ['react', 'es2015']
+                },
+                exclude: /node_modules/
+             }
+        ],
         resolveLoader: {
             modulesDirectories : ['node_modules/']
         }
