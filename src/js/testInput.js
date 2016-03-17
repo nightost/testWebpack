@@ -17,9 +17,28 @@ var Note = React.createClass({
     },
     handleInputChange : function(e){
         var domValue = e.target.value;
-        console.log(domValue);
+        this.delaySay(domValue);
         this.setState({
-            'value' : domValue.substr(0,2)
+            'value' : domValue
+        });
+    },
+    delaySay : function(val){
+        var pm = new Promise(function(resolve,reject){
+            if(val.length > 6){
+                setTimeout(function(){
+                    resolve('符合输入要求');
+                },100);
+            }
+            else{
+                setTimeout(function(){
+                    reject('输入需要大于6位');
+                },100);
+            }
+        });
+        pm.then(function(val){
+            console.log(val);
+        },function(val){
+            console.log(val);
         });
     },
     render : function(){
